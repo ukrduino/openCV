@@ -4,7 +4,6 @@ import argparse
 import time
 
 import cv2
-import imutils
 from imutils.video import FPS
 from imutils.video.pivideostream import PiVideoStream
 
@@ -12,7 +11,7 @@ import driver
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-n", "--num-frames", type=int, default=100,
+ap.add_argument("-n", "--num-frames", type=int, default=10000,
 				help="# of frames to loop over for FPS test")
 ap.add_argument("-d", "--display", type=int, default=-1,
 				help="Whether or not frames should be displayed")
@@ -38,7 +37,7 @@ while fps._numFrames < args["num_frames"]:
 	# TODO Start rotation here after5 seconds
 
 	frame = vs.read()
-	frame = imutils.resize(frame, width=400)
+	# qframe = imutils.resize(frame, width=400)
 	# check to see if the frame should be displayed to our screen
 	if args["display"] > 0:
 		cv2.imshow("Frame", frame)

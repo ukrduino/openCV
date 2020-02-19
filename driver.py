@@ -12,7 +12,7 @@ def init():
     gpio.setwarnings(False)
 
 
-def forward(sec):
+def forward_for(sec: int):
     forward()
     time.sleep(sec)
     stop()
