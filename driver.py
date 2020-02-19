@@ -13,19 +13,25 @@ def init():
 
 
 def forward(sec):
+    forward()
+    time.sleep(sec)
+    stop()
+
+
+def forward():
+    gpio.output(20, True)
+    gpio.output(21, False)
+
+
+def reverse():
     gpio.output(20, False)
     gpio.output(21, True)
-    time.sleep(sec)
-    gpio.output(20, False)
-    gpio.output(21, False)
 
 
 def reverse(sec):
-    gpio.output(20, True)
-    gpio.output(21, False)
+    reverse()
     time.sleep(sec)
-    gpio.output(20, False)
-    gpio.output(21, False)
+    stop()
 
 
 def light(on):
@@ -34,3 +40,8 @@ def light(on):
 
 def clean():
     gpio.cleanup()
+
+
+def stop():
+    gpio.output(20, False)
+    gpio.output(21, False)
