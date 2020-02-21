@@ -4,12 +4,14 @@ import RPi.GPIO as gpio
 
 
 def init():
-    clean()
+    gpio.setwarnings(False)
     gpio.setmode(gpio.BCM)
     gpio.setup(16, gpio.OUT)
     gpio.setup(20, gpio.OUT)
     gpio.setup(21, gpio.OUT)
-    gpio.setwarnings(False)
+    gpio.output(20, False)
+    gpio.output(21, False)
+    gpio.output(16, False)
 
 
 def forward_for(sec: int):
@@ -45,3 +47,8 @@ def clean():
 def stop():
     gpio.output(20, False)
     gpio.output(21, False)
+
+
+if __name__ == '__main__':
+    init()
+    gpio.cleanup()
